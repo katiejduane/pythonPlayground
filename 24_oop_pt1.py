@@ -84,34 +84,120 @@
 # class attributes are defined ONCE, and live on the class itself. They are shared by all instances
 # of that class in the various objects made from it! They're less common than instance attributes
 
+# class User:
+#     active_users = 0 # this is a class attribute!
+#     def __init__(self, first, last, age):
+#         self.first = first
+#         self.last = last
+#         self.age = age
+#         self.__secret = "i like turtles!"
+#         User.active_users += 1
+#         # anytime a new user is created, __init__ runs and this line adds another active user!
+    
+#     def logout(self):
+#         User.active_users -= 1
+#         # this instance method decrements the class attribute active_users ANYTIME a user logs out!
+#         return f"{self.first} has logged out."
+
+#     def full_name(self):
+#         return f"{self.first} {self.last}"
+#     def initials(self):
+#         return f"{self.first[0]}.{self.last[0]}."
+#     def likes(self, thing):
+#         return f"{self.first} likes {thing}."
+#     def is_senior(self):
+#         return self.age >= 65
+#     def birthday(self):
+#         self.age += 1
+#         return f"Happy {self.age}th birthday, {self.first}!"
+
+
+# print(User.active_users) # note i am referring to the class itself and not an instance of it!
+# print(User.active_users)
+
+class Pet:
+    allowed = ['cat', 'dog', 'fish', 'rat']
+    def __init__(self, name, species):
+        if species not in Pet.allowed:
+            raise ValueError(f"You can't have a {species} pet!")
+        self.name = name
+        self.species = species
+    def set_species(self, species):
+        if species not in Pet.allowed:
+            raise ValueError(f"You can't have a {species} pet!")
+        self.species = species
+
+
+cat = Pet("Blue", "cat") 
+dog = Pet("Wyatt", "dog")
+# tony = Pet("Tony", "tiger") #throws an error
+
+Pet.allowed.append('pig') #adds to class attribute list
+print(Pet.allowed)
+
+# Class methods ------------------------------------>
+# these are pretty rare, instance methods are far more common!
+# but we still need to know how to write and recognize them
+# they are not concerned with individual instances, but the class itself.
+
+
 class User:
-    active_users = 0 # this is a class attribute!
+    active_users = 0
+
+    @classmethod  # decorator for calling a class method
+    def from_string(cls, data_str):
+        first,last,age = data_str.split(",")
+        return cls(first,last,int(age))
+
+    @classmethod  # decorator for calling a class method
+    def display_active_users(cls):
+        return f"There are currently {cls.active_users} active users"
+
     def __init__(self, first, last, age):
         self.first = first
         self.last = last
         self.age = age
         self.__secret = "i like turtles!"
         User.active_users += 1
-        # anytime a new user is created, __init__ runs and this line adds another active user!
-    
+
+    def __repr__(self):
+        return f"{self.first} is {self.age}"
+
     def logout(self):
         User.active_users -= 1
-        # this instance method decrements the class attribute active_users ANYTIME a user logs out!
         return f"{self.first} has logged out."
 
     def full_name(self):
         return f"{self.first} {self.last}"
+
     def initials(self):
         return f"{self.first[0]}.{self.last[0]}."
+
     def likes(self, thing):
         return f"{self.first} likes {thing}."
+
     def is_senior(self):
         return self.age >= 65
+
     def birthday(self):
         self.age += 1
         return f"Happy {self.age}th birthday, {self.first}!"
 
 
-print(User.active_users) # note i am referring to the class itself and not an instance of it!
 user1 = User('Bianca', 'LaBonita', 37)
-print(User.active_users)
+user1 = User('Bob', 'Buff', 76)
+
+# calling the class method
+print(User.display_active_users())
+
+tom = User.from_string("Tom,Jones,54")
+print(tom.full_name())
+
+
+# the __repr__ method ------------------------------------>
+# this method is one of several ways to provide a nicer string representation!
+
+# see User class above for example of __repr__ method!
+print(tom)
+
+
