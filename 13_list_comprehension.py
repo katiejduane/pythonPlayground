@@ -20,3 +20,6 @@ print(friends)
 more_nums = [1,2,3,4,5]
 string_nums = [str(num) for num in more_nums]
 print(string_nums)
+
+
+# NEED TO FINISH LATER!!!

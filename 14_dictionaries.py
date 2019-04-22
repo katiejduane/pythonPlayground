@@ -1,66 +1,104 @@
-# DICTIONARIES!!!!!!!!!!!
+# # DICTIONARIES!!!!!!!!!!!
 
-# dictionaries use KEY VALUE pairs to store data, they are
-# NOT ordered! you create one by setting: dict_name = {}
+# # dictionaries use KEY VALUE pairs to store data, they are
+# # NOT ordered! you create one by setting: dict_name = {}
 
-cat = {"name": "Purrball", "age": 3.5, "is_cute": True, "color":"black"}
+# cat = {"name": "Purrball", "age": 3.5, "is_cute": True, "color":"black"}
 
-# you can also create a dictionary with the dict function
-another_cat = dict(name = 'Luna', age = 2)
-# print(another_cat)
+# # you can also create a dictionary with the dict function
+# another_cat = dict(name = 'Luna', age = 2)
+# # print(another_cat)
 
-# accessing data in dictionaries!
-weather = dict(cloudy = True, temp = 72, wind_speed = '13mph', humidity = '57%', sunny = False, raining = "on and off")
-print(weather)
+# # accessing data in dictionaries!
+# weather = dict(cloudy = True, temp = 72, wind_speed = '13mph', humidity = '57%', sunny = False, raining = "on and off")
+# print(weather)
 
-print(weather["cloudy"]) #we need quotes here because it is a string
-# print(weather.temp)
+# print(weather["cloudy"]) #we need quotes here because it is a string
+# # print(weather.temp)
 
-artist = {
-    "first": "Neil",
-    "last": "Young",
-}
+# artist = {
+#     "first": "Neil",
+#     "last": "Young",
+# }
 
-# full_name = artist["first"] + " " + artist["last"]
-# full_name = "{} {}".format(artist["first"], artist["last"])
-full_name = f"{artist['first']} {artist['last']}"
+# # full_name = artist["first"] + " " + artist["last"]
+# # full_name = "{} {}".format(artist["first"], artist["last"])
+# full_name = f"{artist['first']} {artist['last']}"
 
 
-# ITERATING OVER DICTIONARIES!
-# a list on its own is already iterable, but a dictionary isn't
+# # ITERATING OVER DICTIONARIES!
+# # a list on its own is already iterable, but a dictionary isn't
 
-# accessing all values in a dict
-# use .values()
-for value in weather.values():
-    print(value)
+# # accessing all values in a dict
+# # use .values()
+# for value in weather.values():
+#     print(value)
 
-print(cat.values())
+# print(cat.values())
 
-# we can also use .keys() to get the keys!
-for key in weather.keys():
-    print(key)
+# # we can also use .keys() to get the keys!
+# for key in weather.keys():
+#     print(key)
 
-print(cat.keys())
+# print(cat.keys())
 
-# accessing both keys and values! --> use .items()
-for item in weather.items():
-    print(item)
+# # accessing both keys and values! --> use .items()
+# for item in weather.items():
+#     print(item)
 
-print(cat.items())
+# print(cat.items())
 
-for k,v in weather.items():
-    print(f"key is {k} and value is {v}")
+# for k,v in weather.items():
+#     print(f"key is {k} and value is {v}")
 
-donations = dict(sam=25.0, lena=88.99, chuck=13.0, linus=99.5, stan=150.0, lisa=50.25, harrison=10.0)
+# donations = dict(sam=25.0, lena=88.99, chuck=13.0, linus=99.5, stan=150.0, lisa=50.25, harrison=10.0)
 
-total = 0
-for val in donations.values():
-    total += val
+# total = 0
+# for val in donations.values():
+#     total += val
 
-# print(total)
+# # print(total)
 
-# using 'in' with dictionaries: does a dictionary have a key or a value?
-print("humidity" in weather)
-print("tornado" in weather)
-print("Purrball" in cat.values())
-print("tabby" in cat.values())
+# # using 'in' with dictionaries: does a dictionary have a key or a value?
+# print("humidity" in weather)
+# print("tornado" in weather)
+# print("Purrball" in cat.values())
+# print("tabby" in cat.values())
+
+# # DICTIONARY METHODS: clear, copy, fromkeys, and get ------------------>
+
+# NEED TO FINISH LATER!!!!!
+
+
+
+# # IN CLASS EXERCISE SAMPLES ------------------->
+from collections import Counter
+
+# # Initial Dictionary
+# my_dict = {'A': 67, 'B': 23, 'C': 45,
+#            'D': 56, 'E': 12, 'F': 69}
+
+# k = Counter(my_dict)
+
+# # Finding 3 highest values
+# high = k.most_common(3)
+
+# print("Initial Dictionary:")
+# print(my_dict, "\n")
+
+# print("Dictionary with 3 highest values:")
+# print("Keys: Values")
+
+# for i in high:
+#     print(i[0], " :", i[1], " ")
+
+my_dict = {"cats": 5, "dogs": 3, "mice": 4, "horses": 6, "sheep": 2}
+
+counted_dict = Counter(my_dict)
+top3 = counted_dict.most_common(3)
+print(top3)
+#or 
+for item in top3:
+    print(item[0], ":", item[1], " ")
+
+
