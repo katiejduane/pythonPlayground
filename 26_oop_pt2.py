@@ -69,6 +69,10 @@ class Animal:
 
     def make_sound(self, sound):
         print(f"this animal says {sound}")
+
+    def __str__(self):
+        return f"{self.name} is a bad {self.species}"
+        #what is the real difference between str and repr? can i target one vs the other?
     
 
 
@@ -87,4 +91,6 @@ blue.make_sound('meeeoooowwww')
 
 print(blue.toy)
 blue.play()
-print(blue)
+print(blue.__repr__())
+print(blue.__str__())
+
